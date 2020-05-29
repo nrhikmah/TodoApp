@@ -9,9 +9,6 @@ interface TodoDao {
     @Insert
     suspend fun saveTodo(todoRecord: TodoRecord)
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun dueTodo(due: Date)
-
     @Delete
     suspend fun deleteTodo(todoRecord: TodoRecord)
 

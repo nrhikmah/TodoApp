@@ -23,9 +23,6 @@ class TodoViewModel(application: Application): AndroidViewModel(application) {
         repository.deleteTodo(todo)
     }
 
-    fun dueTodo(due: Date){
-        repository.dueTodo(due)
-    }
     fun getAllTodoList():LiveData<List<TodoRecord>>{
         return allTodoList
     }

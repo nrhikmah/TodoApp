@@ -42,12 +42,6 @@ class TodoRepository(application: Application) {
         }
     }
 
-    fun dueTodo(due: Date) = runBlocking {
-        this.launch(Dispatchers.IO) {
-            todoDao?.dueTodo(due)
-        }
-    }
-
 
     fun getAllTodoList(): LiveData<List<TodoRecord>> {
         return allTodos

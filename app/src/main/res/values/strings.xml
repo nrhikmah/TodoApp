@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">MyTodo</string>
+    <string name="app_name">To-Do</string>
+    <string name="delete">delete</string>
+    <string name="save">Save</string>
+    <string name="enter_title">Enter Title</string>
+    <string name="enter_note">Enter Note</string>
+    <string name="enter_due_date">Enter Due Date</string>
+    <string name="pleaseEnterTitle">Please enter title</string>
+    <string name="pleaseEnterNote">Please enter Note</string>
+    <string name="pleaseEnterDueDate">Please enter Due Date</string>
+    <string name="viewOrEditTodo">View/Edit Todo</string>
+    <string name="createTodo">Create Todo</string>
+    <string name="title">Title</string>
+    <string name="note">Note</string>
+    <string name="search">Search</string>
+    <string name="search_here">Search here</string>
+    <string name="date">Date</string>
 </resources>

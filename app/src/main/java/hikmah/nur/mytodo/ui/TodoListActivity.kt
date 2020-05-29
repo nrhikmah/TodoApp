@@ -1,9 +1,10 @@
-package hikmah.nur.mytodo
+package hikmah.nur.mytodo.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import hikmah.nur.mytodo.R
 
-class MainActivity : AppCompatActivity() {
+class TodoListActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
