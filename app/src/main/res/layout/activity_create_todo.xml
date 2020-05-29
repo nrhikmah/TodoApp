@@ -44,21 +44,48 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_todo_due"
+            android:id="@+id/til_todo_tags"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dip"
-            android:layout_marginTop="5dip"
-            android:layout_weight="0">
+            android:layout_below="@id/til_todo_note"
+            android:layout_marginTop="5dp">
 
             <EditText
-                android:id="@+id/et_todo_due_content"
+                android:id="@+id/et_todo_tags"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="top"
-                android:hint="@string/enter_due_date"
-                android:inputType="textMultiLine|textFilter" />
+                android:gravity="start"
+                android:hint="@string/tags"
+                android:singleLine="true"
+                android:textStyle="bold" />
+
         </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tv_todo_due_date"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:text="@string/pick_a_due_date"
+            android:layout_below="@id/til_todo_tags"
+            android:layout_marginTop="10dp"/>
+
+
+        <TextView
+            android:id="@+id/tv_todo_due_time"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:text="@string/pick_a_due_time"
+            android:layout_below="@id/tv_todo_due_date"
+            android:layout_marginTop="10dp"/>
+
 
     </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

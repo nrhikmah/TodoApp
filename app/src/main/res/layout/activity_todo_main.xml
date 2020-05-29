@@ -8,6 +8,15 @@
 
     <include layout="@layout/content_main" />
 
+    <ImageView
+        android:id="@+id/iv_empty_task_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/empty_task_list_two"
+        android:scaleType="centerCrop"
+        android:layout_gravity="center"
+        android:visibility="gone"/>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_new_todo"
         android:layout_width="wrap_content"

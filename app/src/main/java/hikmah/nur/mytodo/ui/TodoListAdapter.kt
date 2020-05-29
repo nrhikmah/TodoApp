@@ -1,5 +1,6 @@
 package hikmah.nur.mytodo.ui
 
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,10 @@ import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import hikmah.nur.mytodo.R
 import hikmah.nur.mytodo.data.database.TodoRecord
+import hikmah.nur.mytodo.utils.convertMillis
+import hikmah.nur.mytodo.utils.convertNumberToMonthName
 import kotlinx.android.synthetic.main.todo_item.view.*
+import java.util.*
 
 class TodoListAdapter(todoEvents: TodoEvents): RecyclerView.Adapter<TodoListAdapter.ViewHolder>(), Filterable {
     private var todoList : List<TodoRecord> = arrayListOf()
@@ -29,10 +33,65 @@ class TodoListAdapter(todoEvents: TodoEvents): RecyclerView.Adapter<TodoListAdap
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         fun bind(todo: TodoRecord, listener: TodoEvents){
             itemView.tv_item_title.text=todo.title
-            itemView.tv_item_note.text=todo.note
-            itemView.tv_item_due.text=todo.due
+            itemView.checkbox_item.isChecked = todo.completed
 
-            itemView.iv_item_delete.setOnClickListener {
+            if (todo.completed){
+                // Strike through the text to give an indicator that task is completed.
+                itemView.tv_item_title.apply {
+                    paintFlags = paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                }
+                itemView.tv_item_due_date.apply {
+                    paintFlags = paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                }
+                itemView.tv_due_date.apply {
+                    paintFlags = paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                }
+            }else {
+                itemView.tv_item_title.apply {
+                    paintFlags = paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+                }
+                itemView.tv_item_due_date.apply {
+                    paintFlags = paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+                }
+                itemView.tv_due_date.apply {
+                    paintFlags = paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+                }
+            }
+            if (todo.dueTime!!.toInt() != 0) {
+                val dateValues = convertMillis(todo.dueTime)
+                val displayFormat: String
+
+                if (dateValues[4]<10) {
+                    displayFormat = String.format(
+                        itemView.context.getString(R.string.due_date_minute_less_than_ten),
+                        convertNumberToMonthName(dateValues[1]),
+                        dateValues[0],
+                        dateValues[2],
+                        dateValues[3],
+                        dateValues[4]
+                    )
+                }else{
+                    displayFormat = String
+                        .format(
+                            itemView.context.getString(R.string.due_date_minute_greater_than_ten),
+                            convertNumberToMonthName(dateValues[1]),
+                            dateValues[0],
+                            dateValues[2],
+                            dateValues[3],
+                            dateValues[4]
+                        )
+                }
+                itemView.tv_item_due_date.text=displayFormat
+            }else{
+                itemView.tv_item_due_date.text=itemView.context.getString(R.string.no_due_is_set)
+            }
+
+
+            itemView.checkbox_item.setOnClickListener {
+                listener.onCheckClicked(todo)
+            }
+
+            itemView.iv_delete_item.setOnClickListener {
                 listener.onDeleteClicked(todo)
             }
 
@@ -53,10 +112,24 @@ class TodoListAdapter(todoEvents: TodoEvents): RecyclerView.Adapter<TodoListAdap
                     todoList
                 } else {
                     val filteredList = arrayListOf<TodoRecord>()
-                    for (row in todoList) {
-                        if (row.title.toLowerCase().contains(charString.toLowerCase())
-                            || row.note.contains(charString.toLowerCase())) {
-                            filteredList.add(row)
+                    for (item in todoList) {
+                        if (item.note?.toLowerCase(Locale.getDefault())!!.contains(
+                                charString.toLowerCase(
+                                    Locale.getDefault()
+                                )
+                            )
+                            || item.title.toLowerCase(Locale.getDefault()).contains(
+                                charString.toLowerCase(
+                                    Locale.getDefault()
+                                )
+                            )
+                            || item.tags?.toLowerCase(Locale.getDefault())!!.contains(
+                                charString.toLowerCase(
+                                    Locale.getDefault()
+                                )
+                            )
+                        ) {
+                            filteredList.add(item)
                         }
                     }
                     filteredList
@@ -90,6 +163,7 @@ class TodoListAdapter(todoEvents: TodoEvents): RecyclerView.Adapter<TodoListAdap
     interface TodoEvents {
         fun onDeleteClicked(todoRecord: TodoRecord)
         fun onViewClicked(todoRecord: TodoRecord)
+        fun onCheckClicked(todoRecord: TodoRecord)
     }
 
 }

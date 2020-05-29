@@ -5,7 +5,6 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import hikmah.nur.mytodo.data.TodoRepository
 import hikmah.nur.mytodo.data.database.TodoRecord
-import java.util.*
 
 class TodoViewModel(application: Application): AndroidViewModel(application) {
     private val repository: TodoRepository = TodoRepository(application)
@@ -15,12 +14,21 @@ class TodoViewModel(application: Application): AndroidViewModel(application) {
         repository.saveTodo(todo)
     }
 
+    fun saveTodoItems(todo: List<TodoRecord>) {
+        repository.saveTodoItems(todo)
+    }
+
     fun updateTodo(todo: TodoRecord){
         repository.updateTodo(todo)
     }
 
     fun deleteTodo(todo: TodoRecord){
         repository.deleteTodo(todo)
+    }
+
+    fun toggleCompleteState(todo: TodoRecord) {
+        todo.completed = !todo.completed
+        repository.updateTodo(todo)
     }
 
     fun getAllTodoList():LiveData<List<TodoRecord>>{
