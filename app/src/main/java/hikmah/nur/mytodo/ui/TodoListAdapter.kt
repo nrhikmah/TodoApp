@@ -86,7 +86,6 @@ class TodoListAdapter(todoEvents: TodoEvents): RecyclerView.Adapter<TodoListAdap
                 itemView.tv_item_due_date.text=itemView.context.getString(R.string.no_due_is_set)
             }
 
-
             itemView.checkbox_item.setOnClickListener {
                 listener.onCheckClicked(todo)
             }

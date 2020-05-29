@@ -19,6 +19,7 @@ import hikmah.nur.mytodo.utils.convertMillis
 import hikmah.nur.mytodo.utils.convertNumberToMonthName
 import hikmah.nur.mytodo.utils.dateToMillis
 import kotlinx.android.synthetic.main.activity_create_todo.*
+import java.time.ZonedDateTime
 import java.util.*
 
 
@@ -103,7 +104,12 @@ class CreateTodoActivity : AppCompatActivity(){
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun saveTodo(){
+
+
         if (validateFields()){
+            val current = ZonedDateTime.now()
+            val millis = current.toInstant().epochSecond
+            val createdDate=millis.toInt()
             val id = if (todoRecord != null) todoRecord?.id else null
             val todo = TodoRecord(
                 id = id,
@@ -111,6 +117,7 @@ class CreateTodoActivity : AppCompatActivity(){
                 note = et_todo_note_content.text.toString(),
                 tags = et_todo_tags.text.toString(),
                 dueTime = dueDate,
+                created = createdDate,
                 completed = todoRecord?.completed ?: false
             )
             val intent = Intent()
@@ -120,6 +127,8 @@ class CreateTodoActivity : AppCompatActivity(){
             if (todo.dueTime!! > 0){
                 NotificationUtils().setNotification(todo, this)
             }
+
+
             finish()
         }
     }

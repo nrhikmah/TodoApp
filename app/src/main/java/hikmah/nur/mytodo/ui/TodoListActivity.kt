@@ -1,21 +1,21 @@
 package hikmah.nur.mytodo.ui
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import hikmah.nur.mytodo.R
 import android.app.Activity
 import android.app.Dialog
 import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.Window
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import hikmah.nur.mytodo.R
 import hikmah.nur.mytodo.data.database.TodoRecord
 import hikmah.nur.mytodo.notification.NotificationUtils
 import hikmah.nur.mytodo.utils.Constants
@@ -23,7 +23,6 @@ import hikmah.nur.mytodo.utils.convertMillis
 import hikmah.nur.mytodo.utils.convertNumberToMonthName
 import kotlinx.android.synthetic.main.activity_todo_main.*
 import kotlinx.android.synthetic.main.content_main.*
-import kotlinx.android.synthetic.main.content_main.view.*
 import kotlinx.android.synthetic.main.todo_item_display_details_dialog.*
 
 
@@ -59,17 +58,17 @@ class TodoListActivity : AppCompatActivity(), TodoListAdapter.TodoEvents {
             }
 
             for (item in itemsWithNoDeadline) {
-                it.remove(item)
+                itemsWithNoDeadline.remove(item)
             }
 
             for (item in completedItems) {
-                it.remove(item)
+                completedItems.remove(item)
             }
 
-            it.sortBy { it.dueTime }
+            itemsWithNoDeadline.sortBy { it.dueTime }
 
-            it.addAll(itemsWithNoDeadline)
-            it.addAll(completedItems)
+            itemsWithNoDeadline.addAll(itemsWithNoDeadline)
+            itemsWithNoDeadline.addAll(completedItems)
 
             todoAdapter.setAllTodoItems(it)
 
@@ -253,3 +252,6 @@ class TodoListActivity : AppCompatActivity(), TodoListAdapter.TodoEvents {
     }
 
 }
+
+
+
