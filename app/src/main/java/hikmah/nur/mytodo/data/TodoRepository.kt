@@ -1,8 +1,6 @@
 package hikmah.nur.mytodo.data
 
 import android.app.Application
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import hikmah.nur.mytodo.data.database.TodoDao
 import hikmah.nur.mytodo.data.database.TodoDatabase
@@ -10,7 +8,7 @@ import hikmah.nur.mytodo.data.database.TodoRecord
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import java.util.*
+
 
 class TodoRepository(application: Application) {
     private val todoDao: TodoDao
@@ -20,6 +18,12 @@ class TodoRepository(application: Application) {
         val database = TodoDatabase.getInstance(application.applicationContext)
         todoDao = database!!.todoDao()
         allTodos = todoDao.getAllTodolist()
+    }
+
+    fun saveTodoItems(todoItems: List<TodoRecord>) = runBlocking {
+        this.launch(Dispatchers.IO) {
+            todoDao.saveTodoItems(todoItems)
+        }
     }
 
     fun saveTodo(todo: TodoRecord)= runBlocking {

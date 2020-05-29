@@ -11,12 +11,13 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import hikmah.nur.mytodo.data.database.TodoRecord
 import hikmah.nur.mytodo.utils.Constants
 import kotlinx.android.synthetic.main.activity_todo_main.*
 import kotlinx.android.synthetic.main.content_main.*
+
 
 class TodoListActivity : AppCompatActivity(), TodoListAdapter.TodoEvents {
 
@@ -34,7 +35,7 @@ class TodoListActivity : AppCompatActivity(), TodoListAdapter.TodoEvents {
         rv_todo_list.adapter = todoAdapter
 
         //Setting up ViewModel and LiveData
-        todoViewModel = ViewModelProviders.of(this).get(TodoViewModel::class.java)
+        todoViewModel = ViewModelProvider(this).get(TodoViewModel::class.java)
         todoViewModel.getAllTodoList().observe(this, Observer {
             todoAdapter.setAllTodoItems(it)
         })

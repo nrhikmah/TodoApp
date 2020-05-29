@@ -9,6 +9,9 @@ interface TodoDao {
     @Insert
     suspend fun saveTodo(todoRecord: TodoRecord)
 
+    @Insert
+    suspend fun saveTodoItems(todoItems: List<TodoRecord>)
+
     @Delete
     suspend fun deleteTodo(todoRecord: TodoRecord)
 

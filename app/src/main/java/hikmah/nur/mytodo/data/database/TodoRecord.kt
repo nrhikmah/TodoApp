@@ -16,10 +16,10 @@ data class TodoRecord (
     @ColumnInfo(name = "note")
     val note:String,
     @ColumnInfo(name = "created")
-    val created: Date? = null,
+    val created: Int? = null,
     @ColumnInfo(name = "updated")
-    val updated: Date? = null,
+    val updated: Int? = null,
     @ColumnInfo(name = "due")
-    val due: Date? = null
+    val due: String? = null
 
 ): Parcelable

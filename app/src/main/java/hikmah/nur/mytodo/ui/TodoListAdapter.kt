@@ -30,7 +30,7 @@ class TodoListAdapter(todoEvents: TodoEvents): RecyclerView.Adapter<TodoListAdap
         fun bind(todo: TodoRecord, listener: TodoEvents){
             itemView.tv_item_title.text=todo.title
             itemView.tv_item_note.text=todo.note
-//            itemView.tv_item_due.text=todo.due
+            itemView.tv_item_due.text=todo.due
 
             itemView.iv_item_delete.setOnClickListener {
                 listener.onDeleteClicked(todo)
