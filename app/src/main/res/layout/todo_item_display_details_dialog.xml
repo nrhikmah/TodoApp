@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     android:layout_width="300dp"
     android:layout_height="wrap_content"
+=======
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+>>>>>>> origin/master
     android:background="@drawable/shape_todo_detail_background">
 
     <TextView
@@ -12,7 +17,11 @@
         android:layout_marginTop="10dp"
         android:fontFamily="sans-serif"
         android:text="Title:"
+<<<<<<< HEAD
         android:textColor="#B22222"
+=======
+        android:textColor="#2196F3"
+>>>>>>> origin/master
         android:textSize="14sp"
         android:textStyle="normal" />
 
@@ -30,23 +39,39 @@
         android:textStyle="normal" />
 
     <TextView
+<<<<<<< HEAD
         android:id="@+id/tv_todo_description"
+=======
+        android:id="@+id/tv_todo_note"
+>>>>>>> origin/master
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_todo_title_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:fontFamily="sans-serif"
+<<<<<<< HEAD
         android:text="Description:"
         android:textColor="#B22222"
+=======
+        android:text="Note:"
+        android:textColor="#2196F3"
+>>>>>>> origin/master
         android:textSize="14sp"
         android:textStyle="normal" />
 
     <TextView
+<<<<<<< HEAD
         android:id="@+id/tv_todo_description_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_todo_description"
+=======
+        android:id="@+id/tv_todo_note_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_todo_note"
+>>>>>>> origin/master
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:fontFamily="sans-serif"
@@ -55,16 +80,28 @@
         android:textSize="15sp"
         android:textStyle="normal" />
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
     <TextView
         android:id="@+id/tv_todo_tags"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_below="@id/tv_todo_description_content"
+=======
+        android:layout_below="@id/tv_todo_note_content"
+>>>>>>> origin/master
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:fontFamily="sans-serif"
         android:text="Tags:"
+<<<<<<< HEAD
         android:textColor="#B22222"
+=======
+        android:textColor="#2196F3"
+>>>>>>> origin/master
         android:textSize="14sp"
         android:textStyle="normal" />
 
@@ -91,7 +128,11 @@
         android:layout_marginTop="10dp"
         android:fontFamily="sans-serif"
         android:text="Due:"
+<<<<<<< HEAD
         android:textColor="#B22222"
+=======
+        android:textColor="#2196F3"
+>>>>>>> origin/master
         android:textSize="14sp"
         android:textStyle="normal" />
 
@@ -127,7 +168,11 @@
             android:focusable="true"
             android:gravity="center"
             android:text="EDIT"
+<<<<<<< HEAD
             android:textColor="#B22222"
+=======
+            android:textColor="#000000"
+>>>>>>> origin/master
             android:textStyle="bold" />
 
         <TextView
@@ -138,7 +183,11 @@
             android:focusable="true"
             android:gravity="center"
             android:text="MARK AS COMPLETED"
+<<<<<<< HEAD
             android:textColor="#B22222"
+=======
+            android:textColor="#F44336"
+>>>>>>> origin/master
             android:textStyle="bold" />
 
     </LinearLayout>

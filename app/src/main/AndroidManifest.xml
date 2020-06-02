@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     package="hikmah.nur.todolist">
 
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+=======
+    package="hikmah.nur.mytodo">
+>>>>>>> origin/master
 
     <application
         android:allowBackup="true"
@@ -11,14 +15,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<<<<<<< HEAD
         <activity android:name="hikmah.nur.todolist.ui.CreateTodoItemActivity"></activity>
         <activity android:name="hikmah.nur.todolist.ui.MainActivity">
+=======
+        <activity android:name=".ui.TodoListActivity">
+>>>>>>> origin/master
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
 
         <receiver
             android:name="hikmah.nur.todolist.notification.AlarmReceiver"
@@ -27,6 +36,8 @@
         <service
             android:name="hikmah.nur.todolist.notification.NotificationService"
             android:enabled="true" />
+=======
+>>>>>>> origin/master
     </application>
 
 </manifest>

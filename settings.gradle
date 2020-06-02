@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 include ':app'
 rootProject.name='Todo List'
+=======
+rootProject.name='MyTodo'
+include ':app'
+>>>>>>> origin/master
